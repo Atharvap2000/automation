@@ -1,5 +1,9 @@
 import streamlit as st
-import selenium
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+import chromedriver_autoinstaller
+from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
@@ -10,9 +14,11 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
 
 def openWebsite():
-    service = Service(executable_path="chromedriver.exe")
-    options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(service=service, options=options)
+    chromedriver_autoinstaller.install()  
+    chrome_options = webdriver.ChromeOptions()
+    # service = Service(executable_path="chromedriver.exe")
+    # options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(options = chrome_options)
     driver.maximize_window()
     driver.get("https://capgemini-technology-3.us10.hcs.cloud.sap/dwaas-ui/index.html")
     
