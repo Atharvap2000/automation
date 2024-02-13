@@ -1,5 +1,20 @@
 import streamlit as st
+from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.action_chains import ActionChains
 
+def openWebsite():
+    service = Service(executable_path="chromedriver.exe")
+    options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(service=service, options=options)
+    driver.maximize_window()
+    driver.get("https://capgemini-technology-3.us10.hcs.cloud.sap/dwaas-ui/index.html")
+    
 def authenticate(username, password):
     # Add your authentication logic here
     # For simplicity, let's check if username and password match predefined values
@@ -33,6 +48,7 @@ def main():
         # Perform different functions based on the selected option
         if selected_option == "Migration":
             st.write("Migration selected")
+            openWebsite()
         elif selected_option == "Object Creation":
              st.write("Object creation selected")
         elif selected_option == "Documentation":
