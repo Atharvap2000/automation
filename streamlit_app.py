@@ -1,4 +1,10 @@
 import streamlit as st
+
+def authenticate(username, password):
+    # Add your authentication logic here
+    # For simplicity, let's check if username and password match predefined values
+    return username == "user" and password == "password"
+
 def main():
     st.title("Test Automation")
 
