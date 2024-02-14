@@ -1,13 +1,16 @@
 import streamlit as st
 
-# def openWebsite():
+def openWebsite():
 #     chromedriver_autoinstaller.install()  
-#     chrome_options = webdriver.ChromeOptions()
-#     # service = Service(executable_path="chromedriver.exe")
-#     # options = webdriver.ChromeOptions()
-#     driver = webdriver.Chrome(options = chrome_options)
-#     driver.maximize_window()
-#     driver.get("https://capgemini-technology-3.us10.hcs.cloud.sap/dwaas-ui/index.html")
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--headless--")
+    chrome_options.add_argument("--no-sandbox--")
+    chrome_options.add_argument("--disable-dev-shm-usage--")
+    service = Service(executable_path="chromedriver.exe")
+    options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(service = service, options = chrome_options)
+    driver.maximize_window()
+    driver.get("https://capgemini-technology-3.us10.hcs.cloud.sap/dwaas-ui/index.html")
     
 def authenticate(username, password):
     # Add your authentication logic here
